@@ -1,4 +1,6 @@
 import { BinaryTree, BinaryTreeDrawNodes, BinaryTreeDrawStylized } from "./src/binaryTree.js";
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import "bootswatch/dist/darkly/bootstrap.min.css";
 import "bootswatch/dist/darkly/bootstrap.min.css";
 
 // Create a binary tree and insert nodes
@@ -6,52 +8,57 @@ const tree = new BinaryTree();
 const drawNode = new BinaryTreeDrawNodes();
 const drawStyle = new BinaryTreeDrawStylized();
 
-// Initialize canvas and context
-const canvas = document.getElementById('binaryTreeCanvas');
-const ctx = canvas.getContext('2d');
+const canvasA = document.getElementById('binaryTreeCanvasA');
+const canvasB = document.getElementById('binaryTreeCanvasB');
+const ctxA = canvasA.getContext('2d');
+const ctxB = canvasB.getContext('2d');
 
-// Wobble factor for randomness in stylized tree
 const worble = Math.PI / 8;
 const scale = 0.82;
 const len = 100;
 const thickness = 4;
 
-// Resize canvas dynamically based on container
 function resizeCanvas() {
-  canvas.width = canvas.parentElement.clientWidth;
-  canvas.height = canvas.parentElement.clientHeight;
+  canvasA.width = canvasA.parentElement.clientWidth;
+  canvasA.height = canvasA.parentElement.clientHeight;
+  canvasB.width = canvasB.parentElement.clientWidth;
+  canvasB.height = canvasB.parentElement.clientHeight;
 }
 
-// Function to clear the canvas
-function clearCanvas() {
+function clearCanvas(ctx, canvas) {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
-// Default function to draw the binary tree with nodes
 function drawNodes() {
-  clearCanvas();
-  drawNode.drawTree(ctx, tree.root, canvas.width / 2, 50, canvas.width / 4, 80);
+  clearCanvas(ctxA, canvasA);
+  drawNode.drawTree(ctxA, tree.root, canvasA.width / 2, 50, canvasA.width / 4, 80);
 }
 
-// Function to draw the stylized binary tree
 function drawStylizedTree() {
-  clearCanvas();
-  drawStyle.drawTree(ctx, 320, 500, Math.PI / 2, scale, len, thickness, tree.root, worble);
+  clearCanvas(ctxB, canvasB);
+  drawStyle.drawTree(ctxB, 320, 500, Math.PI / 2, scale, len, thickness, tree.root, worble);
 }
 
-// Add event listeners to buttons
-document.getElementById('drawNodesBtn').addEventListener('click', drawNodes);
-document.getElementById('drawStylizedBtn').addEventListener('click', drawStylizedTree);
+document.querySelectorAll('button[data-bs-toggle="tab"]').forEach((tabButton) => {
+  tabButton.addEventListener('shown.bs.tab', (event) => {
+    const targetId = event.target.getAttribute('data-bs-target');
+    if (targetId === '#nodes') {
+      resizeCanvas(ctxA, canvasA);
+      drawNodes();
+    } else if (targetId === '#stylized') {
+      resizeCanvas(ctxB, canvasB);
+      drawStylizedTree();
+    }
+  });
+});
 
-// Insert nodes into the binary tree
-tree.insert(16); // Root node
-tree.insert(8);  // Left child of root
-tree.insert(24); // Right child of root
+tree.insert(16);
+tree.insert(8);
+tree.insert(24);
 tree.insert(4);
 tree.insert(12);
 tree.insert(20);
 tree.insert(28);
-// Continue to level 4...
 tree.insert(2);
 tree.insert(6);
 tree.insert(10);
@@ -77,12 +84,13 @@ tree.insert(27);
 tree.insert(29);
 tree.insert(31);
 
-// Initial setup to resize canvas and draw nodes by default
 resizeCanvas();
-drawNodes(); // Default is to draw the nodes
-
-// Redraw tree on canvas resize
 window.addEventListener('resize', () => {
-  resizeCanvas();
-  drawNodes(); // Redraw default tree on resize
+  if (document.getElementById('nodes-tab').classList.contains('active')) {
+    resizeCanvas(canvasA);
+    drawNodes();
+  } else if (document.getElementById('stylized-tab').classList.contains('active')) {
+    resizeCanvas(canvasB);
+    drawStylizedTree();
+  }
 });

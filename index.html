@@ -6,15 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Binary Tree Visualization</title>
   <style>
-    body {
+    body,
+    div {
       margin: 1 auto;
       padding: 1 auto;
-      height: 100vh;
-      box-sizing: border-box;
     }
 
     canvas {
-      border: 1px solid black;
+      border: 0px solid black;
       width: 100%;
       height: 100%;
       max-width: 1200px;
@@ -23,46 +22,148 @@
 
     #container {
       width: 90vw;
-      height: 90vh;
-    }
-
-    #button-container {
-      margin-top: 10px;
-      display: flex;
-      justify-content: space-around;
-    }
-
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
+      height: 60vh;
+      margin: 1 auto;
+      padding: 1 auto;
     }
   </style>
 </head>
 
 <body>
-  <main>
-    <header>Binary Tree Visualization with 31 Nodes</header>
-    <div>
-      <header>Explanation of Nodes and Positioning:</header>
-      <header>Root Node:</header>
-      16 is the root, placed at the center of the canvas at the top.
-      <header>Level 1:</header>
-      8 (left child of root) and 24 (right child of root) appear on either side of 16.
-      <header>Level 2:</header>
-      Nodes 4, 12, 20, and 28 are children of 8 and 24, splitting the next level symmetrically.
-      <header>Level 3:</header>
-      Nodes like 2, 6, 10, etc., continue to divide the space evenly, appearing further down.
-      <header>Level 4:</header>
-      The smallest values, 1, 3, 5, etc., are the leaf nodes, placed on the lowest level, symmetrically spaced.
-      Visual Layout: The nodes are arranged symmetrically with their parent-child relationships intact, creating a balanced binary tree.
-    </div>
-    <div id="container">
-      <canvas id="binaryTreeCanvas"></canvas>
-    </div>
-    <div id="button-container">
-      <button id="drawNodesBtn">Draw Nodes</button>
-      <button id="drawStylizedBtn">Draw Stylized Tree</button>
+  <main class="container">
+    <div>&nbsp;</div>
+    <header class="h4">Binary Tree Visualization with 31 Nodes</header>
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <button class="nav-link active" id="about-tab" data-bs-toggle="tab" data-bs-target="#about" type="button" role="tab"
+          aria-controls="about" aria-selected="true">About</button>
+        <button class="nav-link" id="nodes-tab" data-bs-toggle="tab" data-bs-target="#nodes" type="button"
+          role="tab" aria-controls="nodes" aria-selected="false">Profile</button>
+        <button class="nav-link" id="stylized-tab" data-bs-toggle="tab" data-bs-target="#stylized" type="button"
+          role="tab" aria-controls="stylized" aria-selected="false">Contact</button>
+      </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade" id="about" role="tabpanel" aria-labelledby="about-tab">
+        <div class="tab-pane fade show active" id="about" role="tabpanel" aria-labelledby="about-tab">
+          <article>
+            <h2>Binary Tree: The Root of Complexity and Symmetry in Nature</h2>
+            <h3>Introduction to the Binary Tree</h3>
+            <p>A binary tree is one of the most fundamental structures in mathematics and computer science, but its
+              roots (pun intended) also echo in sacred geometry. At its core, the binary tree is a branching structure
+              where each node has at most two child nodes. Its significance comes from its ability to model hierarchical
+              relationships, balance, and growth patterns in both nature and computation.</p>
+            <p>In sacred geometry, the binary tree can be interpreted as a symbol of duality and balance, where each
+              division creates a mirror of symmetry. It can also be seen in natural forms like trees, rivers, and neural
+              connections, where binary branching structures optimize the flow of energy, information, or nutrients.</p>
+            <h3>Mathematical Foundation of Binary Trees</h3>
+            <p><strong>Definition:</strong> A binary tree is a hierarchical data structure, typically defined as:</p>
+            <ul>
+              <li>A tree consisting of nodes.</li>
+              <li>Each node has at most two children, called the left child and right child.</li>
+              <li>There is a root node, which is the origin of the structure, and every other node is connected via a
+                unique path.</li>
+            </ul>
+            <p>Mathematically, a binary tree can be represented as:</p>
+            <pre><code>
+        Root: The starting node, denoted as T
+        Left Child (L): The left subtree of the binary tree.
+        Right Child (R): The right subtree of the binary tree.
+        Each node in a binary tree is denoted as a triplet: 
+        T = (L, R, v), where v is the value stored in the node, and L and R are the left and right subtrees, respectively.
+            </code></pre>
+            <h3>Geometric Interpretation</h3>
+            <p>In geometry, a binary tree can be visualized as a recursive fractal structure. Consider this:</p>
+            <ul>
+              <li><strong>Level 0:</strong> A single point (the root) representing unity or origin.</li>
+              <li><strong>Level 1:</strong> The point branches into two points, creating a line segment, symbolizing the
+                first step of division.</li>
+              <li><strong>Level 2:</strong> Each of the two points branches again, creating four points, and so on.</li>
+            </ul>
+            <p>This iterative branching process mirrors the self-similarity observed in fractals like the Dragon Curve
+              or Tree Fractal, and sacred symbols such as the Tree of Life from Kabbalah. The binary tree's geometric
+              shape thus echoes the concept of recursive growth and expansion found in both nature and spiritual
+              symbolism.</p>
+            <h3>Binary Trees in Nature</h3>
+            <p>In nature, binary trees appear as efficient structures for optimizing space, time, and resources:</p>
+            <ul>
+              <li><strong>River Systems:</strong> Branching rivers follow a binary tree pattern as they seek the most
+                efficient path for water flow.</li>
+              <li><strong>Neural Networks:</strong> The human brain's neurons branch similarly, optimizing signal
+                transmission.</li>
+              <li><strong>Plant Growth:</strong> Trees and plants follow binary branching to maximize sunlight
+                absorption and resource distribution.</li>
+            </ul>
+            <p>This natural efficiency ties into the concept of sacred geometry, where nature’s shapes are often the
+              most efficient and harmonious forms possible, balancing function with beauty.</p>
+            <h3>Binary Trees in Linear Algebra</h3>
+            <p>To understand binary trees through the lens of linear algebra, consider the structure as a matrix. Each
+              node's relationship can be mapped into a matrix that represents connections between nodes.</p>
+            <pre><code>
+        For example, given a tree with n nodes, we can represent the adjacency matrix of a binary tree. If there is an edge between node i and node j, the matrix entry A[i][j] is 1; otherwise, it's 0.
+            </code></pre>
+            <p>Matrix transformations like rotation (swapping subtrees) or scaling (expanding or contracting branches)
+              can be visualized as geometric transformations applied to the tree's structure.</p>
+            <h3>Binary Trees in Graph Theory</h3>
+            <p>In graph theory, a binary tree is a specific type of graph, where:</p>
+            <ul>
+              <li><strong>Vertices</strong> represent the nodes.</li>
+              <li><strong>Edges</strong> represent the connections between the parent and child nodes.</li>
+              <li><strong>Tree Height</strong> is the length of the longest path from the root to a leaf node.</li>
+            </ul>
+            <p>The binary tree is often used to model hierarchical data, like family trees, file directories, and
+              organizational structures. It also forms the backbone of many algorithms:</p>
+            <ul>
+              <li><strong>Binary Search Trees (BST):</strong> A type of binary tree that allows for fast searching,
+                insertion, and deletion of data.</li>
+              <li><strong>Heaps:</strong> A binary tree structure that helps efficiently manage data for sorting
+                algorithms (e.g., heapsort).</li>
+            </ul>
+            <h3>Matrix Transformations in Binary Trees</h3>
+            <p>Linear algebra comes into play when visualizing transformations within a binary tree. For example:</p>
+            <ul>
+              <li><strong>Rotation:</strong> In binary search trees, rotations are used to keep the tree balanced. These
+                rotations can be mathematically described by matrix transformations that alter the position of nodes.
+              </li>
+              <li><strong>Eigenvectors and Eigenvalues:</strong> These can describe the behavior of recursive patterns
+                in the tree, particularly when applying transformations across levels of the tree.</li>
+            </ul>
+            <p>A binary tree can be thought of as a recursive matrix structure, where each transformation (rotation,
+              scaling) corresponds to operations applied to the matrix. These operations maintain the tree’s core
+              symmetry, a feature that strongly ties it to sacred geometry’s emphasis on balance and proportionality.
+            </p>
+            <h3>Binary Trees and Fractals</h3>
+            <p>Binary trees also have a deep connection to fractals. A Pythagoras Tree is a fractal that can be
+              generated using binary tree structures. Each node of the binary tree can recursively branch into smaller
+              copies of itself, much like how fractals display self-similarity across scales.</p>
+            <p>In this way, the binary tree and fractal theory merge, illustrating both the recursive growth in nature
+              and the endless complexity contained within seemingly simple structures.</p>
+            <h3>Algorithmic Understanding and Progression</h3>
+            <p>The binary tree is foundational to many algorithmic processes in computer science and artificial
+              intelligence. As algorithms become more advanced and data structures grow in complexity, understanding the
+              binary tree helps in mastering:</p>
+            <ul>
+              <li><strong>Search and Sort Algorithms:</strong> The use of binary trees in data management algorithms
+                like binary search.</li>
+              <li><strong>Graph Traversal:</strong> Depth-first and breadth-first searches, core techniques in
+                navigating graphs and trees, are rooted in binary tree traversal.</li>
+            </ul>
+            <p>Additionally, as we move into more complex forms like n-dimensional trees (k-d trees, octrees), the
+              principles of binary trees scale up, helping in managing multi-dimensional data such as images, maps, and
+              even language embeddings in AI.</p>
+          </article>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="nodes" role="tabpanel" aria-labelledby="nodes-tab">
+        <div id="container">
+          <canvas id="binaryTreeCanvasA"></canvas>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="stylized" role="tabpanel" aria-labelledby="stylized-tab">
+        <div id="container">
+          <canvas id="binaryTreeCanvasB"></canvas>
+        </div>
+      </div>
     </div>
   </main>
   <script type="module" src="./main.js"></script>
