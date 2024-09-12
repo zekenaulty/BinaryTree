@@ -2,6 +2,7 @@ import { BinaryTree, BinaryTreeDrawNodes, BinaryTreeDrawStylized } from "./src/b
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import "bootswatch/dist/darkly/bootstrap.min.css";
 import "bootswatch/dist/darkly/bootstrap.min.css";
+import * as bootstrap from 'bootstrap';
 
 // Create a binary tree and insert nodes
 const tree = new BinaryTree();
@@ -50,6 +51,19 @@ document.querySelectorAll('button[data-bs-toggle="tab"]').forEach((tabButton) =>
       drawStylizedTree();
     }
   });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const aboutTabButton = document.querySelector('#about-tab');
+  const aboutTab = new bootstrap.Tab(aboutTabButton);
+  aboutTab.show();
+
+  const activeTab = document.querySelector('.tab-pane.active').id;
+  if (activeTab === 'nodes') {
+    drawNodes();
+  } else if (activeTab === 'stylized') {
+    drawStylizedTree();
+  }
 });
 
 tree.insert(16);
