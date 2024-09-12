@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Binary Tree Visualization</title>
+    <style>
+      canvas {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Binary Tree Visualization with 31 Nodes</h1>
+    <div>
+      <h5>Explanation of Nodes and Positioning:</h5>
+      <h6>Root Node:</h6>
+      16 is the root, placed at the center of the canvas at the top.
+      <h6>Level 1:</h6>
+      8 (left child of root) and 24 (right child of root) appear on either side
+      of 16.
+      <h6>Level 2:</h6>
+      Nodes 4, 12, 20, and 28 are children of 8 and 24, splitting the next level
+      symmetrically.
+      <h6>Level 3:</h6>
+      Nodes like 2, 6, 10, etc., continue to divide the space evenly, appearing
+      further down.
+      <h6>Level 4:</h6>
+      The smallest values, 1, 3, 5, etc., are the leaf nodes, placed on the
+      lowest level, symmetrically spaced. Visual Layout: The nodes are arranged
+      symmetrically with their parent-child relationships intact, creating a
+      balanced binary tree. The canvas starts at 600, 50 for the root node, with
+      subsequent nodes spaced by dx (horizontal distance) and dy (vertical
+      distance). As the tree grows deeper, the horizontal distance (dx) is
+      halved, while the vertical distance remains constant (80 pixels). You
+      should now see a fully branched binary tree with 31 nodes when you run
+      this code. Each level divides symmetrically, making the structure clear
+      and easy to follow visually.
+    </div>
+    <canvas id="binaryTreeCanvas" width="1200" height="800"></canvas>
+    <script>
+      class Node {
+        constructor(value) {
+          this.value = value;
+          this.left = null;
+          this.right = null;
+        }
+      }
+
+      class BinaryTree {
+        constructor() {
+          this.root = null;
+        }
+
+        insert(value) {
+          if (!this.root) {
+            this.root = new Node(value); // Set the root node
+          } else {
+            this._insertRecursive(this.root, value); // Recursively find the right place for the new node
+          }
+        }
+
+        _insertRecursive(current, value) {
+          if (value < current.value) {
+            // If the value is less, go to the left
+            if (!current.left) {
+              current.left = new Node(value); // Insert as the left child if empty
+            } else {
+              this._insertRecursive(current.left, value); // Recursively insert into the left subtree
+            }
+          } else {
+            // If the value is greater, go to the right
+            if (!current.right) {
+              current.right = new Node(value); // Insert as the right child if empty
+            } else {
+              this._insertRecursive(current.right, value); // Recursively insert into the right subtree
+            }
+          }
+        }
+
+        drawTree(ctx, node, x, y, dx, dy) {
+          if (node !== null) {
+            // Draw node (circle)
+            ctx.beginPath();
+            ctx.arc(x, y, 20, 0, 2 * Math.PI); // Draw a circle for the node
+            ctx.fillStyle = '#76c7c0'; // Node color
+            ctx.fill();
+            ctx.stroke();
+
+            // Draw value inside the node
+            ctx.fillStyle = 'black';
+            ctx.font = '16px Arial';
+            ctx.fillText(node.value, x - 8, y + 5); // Node value centered in the circle
+
+            // Draw left child if exists
+            if (node.left !== null) {
+              ctx.beginPath();
+              ctx.moveTo(x, y); // Line starts from the current node
+              ctx.lineTo(x - dx, y + dy); // Line goes to the left child
+              ctx.stroke();
+              this.drawTree(ctx, node.left, x - dx, y + dy, dx / 2, dy); // Recursively draw the left subtree
+            }
+
+            // Draw right child if exists
+            if (node.right !== null) {
+              ctx.beginPath();
+              ctx.moveTo(x, y); // Line starts from the current node
+              ctx.lineTo(x + dx, y + dy); // Line goes to the right child
+              ctx.stroke();
+              this.drawTree(ctx, node.right, x + dx, y + dy, dx / 2, dy); // Recursively draw the right subtree
+            }
+          }
+        }
+      }
+
+      // Initialize canvas
+      const canvas = document.getElementById('binaryTreeCanvas');
+      const ctx = canvas.getContext('2d');
+
+      // Create a binary tree and insert nodes
+      const tree = new BinaryTree();
+
+      // Root node
+      tree.insert(16); // The root of the tree, will be at the top, centered
+
+      // Level 1
+      tree.insert(8); // Left child of root, appears to the left
+      tree.insert(24); // Right child of root, appears to the right
+
+      // Level 2
+      tree.insert(4); // Left child of node 8
+      tree.insert(12); // Right child of node 8
+      tree.insert(20); // Left child of node 24
+      tree.insert(28); // Right child of node 24
+
+      // Level 3
+      tree.insert(2); // Left child of node 4
+      tree.insert(6); // Right child of node 4
+      tree.insert(10); // Left child of node 12
+      tree.insert(14); // Right child of node 12
+      tree.insert(18); // Left child of node 20
+      tree.insert(22); // Right child of node 20
+      tree.insert(26); // Left child of node 28
+      tree.insert(30); // Right child of node 28
+
+      // Level 4
+      tree.insert(1); // Left child of node 2
+      tree.insert(3); // Right child of node 2
+      tree.insert(5); // Left child of node 6
+      tree.insert(7); // Right child of node 6
+      tree.insert(9); // Left child of node 10
+      tree.insert(11); // Right child of node 10
+      tree.insert(13); // Left child of node 14
+      tree.insert(15); // Right child of node 14
+      tree.insert(17); // Left child of node 18
+      tree.insert(19); // Right child of node 18
+      tree.insert(21); // Left child of node 22
+      tree.insert(23); // Right child of node 22
+      tree.insert(25); // Left child of node 26
+      tree.insert(27); // Right child of node 26
+      tree.insert(29); // Left child of node 30
+      tree.insert(31); // Right child of node 30
+
+      // Draw the binary tree with canvas, starting at (600, 50), with horizontal and vertical spacing
+      tree.drawTree(ctx, tree.root, canvas.width / 2, 50, 250, 80);
+    </script>
+  </body>
+</html>
