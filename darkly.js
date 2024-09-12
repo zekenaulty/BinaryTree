@@ -1,1 +1,1 @@
-import "bootswatch/dist/darkly/bootstrap.min.css";
+import "./node_modules/bootswatch/dist/darkly/bootstrap.min.css";
