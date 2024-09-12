@@ -1,3 +1,6 @@
+
+Visual: https://zekenaulty.github.io/BinaryTree/
+
 Binary Tree: The Root of Complexity and Symmetry in Nature
 Introduction to the Binary Tree
 A binary tree is one of the most fundamental structures in mathematics and computer science, but its roots (pun intended) also echo in sacred geometry. At its core, the binary tree is a branching structure where each node has at most two child nodes. Its significance comes from its ability to model hierarchical relationships, balance, and growth patterns in both nature and computation.
@@ -396,4 +399,4 @@ In this example, you can see how a prompt is designed to make an AI understand t
 
 Each version offers a different perspective on the binary tree structure, from low-level memory manipulation in Assembly to high-level AI prompts. The progression through these languages reflects the power of binary trees in both sacred geometry (for their recursive and fractal nature) and practical computing (as fundamental data structures).
 
-
+https://zekenaulty.github.io/BinaryTree/
