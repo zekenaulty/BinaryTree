@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
+  base: '/BinaryTree/', 
   root: '.', // Root directory is the project root
   build: {
     rollupOptions: {
