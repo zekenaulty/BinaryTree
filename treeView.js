@@ -1,9 +1,10 @@
 import { Node } from "./node.js";
-import { BinaryTree, BinaryTreeDrawNodes } from "./binaryTree.js";
+import { BinaryTree, BinaryTreeDrawNodes, BinaryTreeDrawStylized } from "./binaryTree.js";
 
 // Create a binary tree and insert nodes
 const tree = new BinaryTree();
 const drawNode = new BinaryTreeDrawNodes();
+const drawStyle = new BinaryTreeDrawStylized();
 
 // Initialize canvas and context
 const canvas = document.getElementById('binaryTreeCanvas');
@@ -35,7 +36,7 @@ function drawNodes() {
 // Function to draw the stylized binary tree
 function drawStylizedTree() {
   clearCanvas();
-  drawNode.drawBinaryTreeStylized(ctx, 320, 500, Math.PI / 2, scale, len, thickness, tree.root, worble);
+  drawStyle.drawTree(ctx, 320, 500, Math.PI / 2, scale, len, thickness, tree.root, worble);
 }
 
 // Add event listeners to buttons
