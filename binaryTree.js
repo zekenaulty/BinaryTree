@@ -68,3 +68,66 @@ export class BinaryTree {
       }
     }
   }
+
+  export class BinaryTreeDrawStylized {
+    drawTree(ctx, x, y, angle, scale, len, thickness, node, worble) {
+      if (node === null) return; // If the node is empty, return
+  
+      const rando = Math.random() * 10 * (Math.PI / 180); // Randomize angle slightly
+      const x1 = Math.floor(scale * len * Math.cos(angle));
+      const y1 = Math.floor(scale * len * Math.sin(angle));
+  
+      // Draw the current branch (line)
+      ctx.beginPath();
+      ctx.strokeStyle = 'brown';
+      ctx.lineWidth = thickness;
+      ctx.moveTo(x, y);
+      ctx.lineTo(x + x1, y - y1);
+      ctx.stroke();
+  
+      // Draw the node (circle for leaves)
+      if (len < 18) {
+        ctx.beginPath();
+        ctx.shadowBlur = 5;
+        ctx.shadowColor = "rgba(0,0,0,0.73)";
+        ctx.fillStyle = 'green';
+        ctx.arc(x + x1, y - y1, 6, 0, 2 * Math.PI); // Leaf node
+        ctx.fill();
+      }
+  
+      // Draw the value of the node if it's not too small
+      if (len > 6) {
+        ctx.fillStyle = 'black';
+        ctx.font = '16px Arial';
+        ctx.fillText(node.value, x + x1 - 8, y - y1 + 5); // Node value
+      }
+  
+      // Stop recursion if the length is too short
+      if (len < 6) return;
+  
+      // Recursively draw the left and right children with randomized angles
+      this.drawTree(
+        ctx,
+        x + x1,
+        y - y1,
+        angle - worble + rando,
+        scale,
+        scale * len,
+        0.7 * thickness,
+        node.left,
+        worble
+      );
+      this.drawTree(
+        ctx,
+        x + x1,
+        y - y1,
+        angle + worble + rando,
+        scale,
+        scale * len,
+        0.7 * thickness,
+        node.right,
+        worble
+      );
+    }
+  }
+  
