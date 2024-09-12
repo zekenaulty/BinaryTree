@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Binary Tree Visualization</title>
+  <style>
+    body {
+      margin: 1 auto;
+      padding: 1 auto;
+      height: 100vh;
+      box-sizing: border-box;
+    }
+
+    canvas {
+      border: 1px solid black;
+      width: 100%;
+      height: 100%;
+      max-width: 1200px;
+      max-height: 800px;
+    }
+
+    #container {
+      width: 90vw;
+      height: 90vh;
+    }
+
+    #button-container {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-around;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+  <script type="module" crossorigin src="/assets/main-BgKl95x1.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/main-CZdK6nMS.css">
+</head>
+
+<body>
+  <main>
+    <header>Binary Tree Visualization with 31 Nodes</header>
+    <div>
+      <header>Explanation of Nodes and Positioning:</header>
+      <header>Root Node:</header>
+      16 is the root, placed at the center of the canvas at the top.
+      <header>Level 1:</header>
+      8 (left child of root) and 24 (right child of root) appear on either side of 16.
+      <header>Level 2:</header>
+      Nodes 4, 12, 20, and 28 are children of 8 and 24, splitting the next level symmetrically.
+      <header>Level 3:</header>
+      Nodes like 2, 6, 10, etc., continue to divide the space evenly, appearing further down.
+      <header>Level 4:</header>
+      The smallest values, 1, 3, 5, etc., are the leaf nodes, placed on the lowest level, symmetrically spaced.
+      Visual Layout: The nodes are arranged symmetrically with their parent-child relationships intact, creating a balanced binary tree.
+    </div>
+    <div id="container">
+      <canvas id="binaryTreeCanvas"></canvas>
+    </div>
+    <div id="button-container">
+      <button id="drawNodesBtn">Draw Nodes</button>
+      <button id="drawStylizedBtn">Draw Stylized Tree</button>
+    </div>
+  </main>
+</body>
+
+</html>
