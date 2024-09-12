@@ -13,30 +13,17 @@ A tree consisting of nodes.
 Each node has at most two children, called the left child and right child.
 There is a root node, which is the origin of the structure, and every other node is connected via a unique path.
 Mathematically, a binary tree can be represented as:
-
-Root: The starting node, denoted as 
-𝑇
-T.
+```
+Root: The starting node, denoted as 𝑇
 Left Child (L): The left subtree of the binary tree.
 Right Child (R): The right subtree of the binary tree.
 Each node in a binary tree is denoted as a triplet: 
-𝑇
-=
-(
-𝐿
-,
-𝑅
-,
-𝑣
-)
-T=(L,R,v), where 
-𝑣
-v is the value stored in the node, and 
-𝐿
-L and 
-𝑅
+𝑇=(𝐿,𝑅,𝑣)
+T=(L,R,v), where 𝑣
+v is the value stored in the node, and 𝐿
+L and 𝑅
 R are the left and right subtrees, respectively.
-
+```
 Geometric Interpretation
 In geometry, a binary tree can be visualized as a recursive fractal structure. Consider this:
 
@@ -55,23 +42,14 @@ This natural efficiency ties into the concept of sacred geometry, where nature�
 
 Binary Trees in Linear Algebra
 To understand binary trees through the lens of linear algebra, consider the structure as a matrix. Each node's relationship can be mapped into a matrix that represents connections between nodes.
-
-For example, given a tree with 
-𝑛
-n nodes, we can represent the adjacency matrix of a binary tree. If there is an edge between node 
-𝑖
-i and node 
-𝑗
-j, the matrix entry 
-𝐴
-[
-𝑖
-]
-[
-𝑗
-]
+```
+For example, given a tree with 𝑛
+n nodes, we can represent the adjacency matrix of a binary tree. If there is an edge between node 𝑖
+i and node 𝑗
+j, the matrix entry 𝐴
+[𝑖][𝑗]
 A[i][j] is 1; otherwise, it's 0.
-
+```
 Matrix transformations like rotation (swapping subtrees) or scaling (expanding or contracting branches) can be visualized as geometric transformations applied to the tree's structure.
 
 Binary Trees in Graph Theory
@@ -398,5 +376,3 @@ In this example, you can see how a prompt is designed to make an AI understand t
 ---
 
 Each version offers a different perspective on the binary tree structure, from low-level memory manipulation in Assembly to high-level AI prompts. The progression through these languages reflects the power of binary trees in both sacred geometry (for their recursive and fractal nature) and practical computing (as fundamental data structures).
-
-https://zekenaulty.github.io/BinaryTree/
