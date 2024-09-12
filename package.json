@@ -12,5 +12,8 @@
   "devDependencies": {
     "gh-pages": "^6.1.1",
     "vite": "^5.4.3"
+  },
+  "dependencies": {
+    "bootswatch": "^5.3.3"
   }
 }
