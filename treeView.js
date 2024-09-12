@@ -1,5 +1,5 @@
 import { Node } from "./node.js";
-import { BinaryTree, BinaryTreeDrawNodes } from "./BinaryTree.js";
+import { BinaryTree, BinaryTreeDrawNodes } from "./binaryTree.js";
 
 // Create a binary tree and insert nodes
 const tree = new BinaryTree();
