@@ -1,5 +1,5 @@
-import { Node } from "./node.js";
-import { BinaryTree, BinaryTreeDrawNodes, BinaryTreeDrawStylized } from "./binaryTree.js";
+import { BinaryTree, BinaryTreeDrawNodes, BinaryTreeDrawStylized } from "./src/binaryTree.js";
+import "bootswatch/dist/darkly/bootstrap.min.css";
 
 // Create a binary tree and insert nodes
 const tree = new BinaryTree();
