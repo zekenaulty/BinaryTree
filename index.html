@@ -5,8 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Binary Tree Visualization</title>
     <style>
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        box-sizing: border-box;
+      }
+      
       canvas {
         border: 1px solid black;
+        width: 100%;
+        height: 100%;
+        max-width: 1200px;
+        max-height: 800px;
+      }
+
+      #container {
+        width: 90vw;
+        height: 90vh;
       }
     </style>
   </head>
@@ -29,15 +48,12 @@
       The smallest values, 1, 3, 5, etc., are the leaf nodes, placed on the
       lowest level, symmetrically spaced. Visual Layout: The nodes are arranged
       symmetrically with their parent-child relationships intact, creating a
-      balanced binary tree. The canvas starts at 600, 50 for the root node, with
-      subsequent nodes spaced by dx (horizontal distance) and dy (vertical
-      distance). As the tree grows deeper, the horizontal distance (dx) is
-      halved, while the vertical distance remains constant (80 pixels). You
-      should now see a fully branched binary tree with 31 nodes when you run
-      this code. Each level divides symmetrically, making the structure clear
-      and easy to follow visually.
+      balanced binary tree.
       <div><a href="https://github.com/zekenaulty/BinaryTree/blob/main/README.md">Read me on github.com</a></div>
     </div>
-    <canvas id="binaryTreeCanvas" width="800" height="800"></canvas>
+    <div id="container">
+      <canvas id="binaryTreeCanvas"></canvas>
+    </div>
+    <script type="module" src="./treeView.js"></script>
   </body>
 </html>
